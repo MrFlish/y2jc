@@ -1,0 +1,48 @@
+{
+  "name": "config-compiler",
+  "version": "1.0.0",
+  "description": "Compiles yaml to json files. Useful when you want to take advantage of json intellisence in your project, but don't want to write json format in the first place.",
+  "main": "./dist/index.js ",
+  "scripts": {
+    "test": "jest",
+    "test:w": "jest --watchAll",
+    "tsc": "tsc --watch",
+    "json-compiler": "node dist/index"
+  },
+  "keywords": [
+    "compiler",
+    "compile",
+    "watch",
+    "json",
+    "yaml",
+    "configuration",
+    "config",
+    "file"
+  ],
+  "author": "Bertrand COEZ",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.4.1",
+    "@types/mock-fs": "^4.13.1",
+    "@types/node": "^17.0.30",
+    "@types/replace-ext": "^2.0.0",
+    "@types/throttle-debounce": "^5.0.0",
+    "@types/yup": "^0.29.13",
+    "jest": "^27.5.1",
+    "memfs": "^3.4.1",
+    "mock-fs": "^5.1.2",
+    "nodemon": "^2.0.16",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "chalk": "<5.0.0",
+    "fs-extra": "^10.1.0",
+    "replace-ext": "^2.0.0",
+    "throttle-debounce": "^5.0.0",
+    "yaml": "^2.0.1",
+    "yup": "^0.32.11"
+  }
+}

@@ -1,0 +1,1 @@
+export type TypeSimpleGroups = { files: string[], directories: string[] };

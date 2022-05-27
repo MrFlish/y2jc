@@ -1,0 +1,15 @@
+# Where do i find / write files
+files: 
+  - 
+    source: "./configuration/src"
+    target: "./configuration/json"
+  
+  # -
+  #   source: "./another/source/directory"
+  #   target: "./another/target/directory"
+
+# Do i have to prettify json files
+pretty: true
+
+# How many indent spaces (relevant if pretty is true)
+indent: 2
