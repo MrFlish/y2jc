@@ -1,9 +1,0 @@
-key1: value1
-key2: value2
-key3: 
-  k0: v0
-  k1: v1
-key4:
-  - v0
-  - v1
-  - v2
