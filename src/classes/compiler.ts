@@ -4,19 +4,27 @@ import Source from "./IODirectory/source";
 import Target from "./IODirectory/target";
 import Compilable from "./compilable";
 import { Directory, SimpleFile } from "./files";
+import { configurationOptions } from "../validation/configuration.interface";
 
 export class Compiler extends Compilable {
     private _source: Source;
     private _target: Target;
+    private readonly _options: configurationOptions;
 
-    constructor(source: Source, target: Target){
+    constructor(source: Source, target: Target, options: configurationOptions){
         super();
         this._source = source;
         this._target = target;
+        this._options = options;
+    }
+
+    public showoptions(): void{
+        console.log(this.options);
     }
     
     public get source(): Source { return this._source; };
     public get target(): Target { return this._target; };
+    public get options(): configurationOptions { return this._options; };
     
     /**
      * Vérifie : 
@@ -44,7 +52,7 @@ export class Compiler extends Compilable {
                 await this.target.createMissingDirectories(missing.directories);
                 for(const f of missing.files){
                     const target = this.resolveTargetName(f);
-                    if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target);
+                    if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target, this.options.pretty, this.options.indent);
                     else await this.target.copyFile(f.absolute, target);
                 }
                 return;
@@ -68,7 +76,7 @@ export class Compiler extends Compilable {
                 const smtime = await this.source.mtimeof(f.absolute);
                 const tmtime = await this.target.mtimeof(target);
                 if(!(smtime > tmtime)) continue;
-                if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target);
+                if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target, this.options.pretty, this.options.indent);
                 else await this.target.copyFile(f.absolute, target);
             }
             return;
@@ -97,7 +105,7 @@ export class Compiler extends Compilable {
 
     public async init(): Promise<void>{
         try {
-            await this.source.init();
+            await this.source.init(this.options.watch);
             await this.target.init();
             await this.sync();
             return;
@@ -106,6 +114,7 @@ export class Compiler extends Compilable {
 
     public async watch(): Promise<void>{
         try {
+            if(!this.options.watch) return;
             this.source.on("acu", async (e, d) => {
                 if(e !== "change") await this.sync();
                 else await this.handleChangeEvent(d);
@@ -192,7 +201,7 @@ export class Compiler extends Compilable {
                 const smtime = await this.source.mtimeof(f.absolute);
                 const tmtime = await this.target.mtimeof(target);
                 if(!(smtime > tmtime)) continue;
-                if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target);
+                if(this.isCompilable(f)) await this.target.yamlToJson(f.absolute, target, this.options.pretty, this.options.indent);
                 else await this.target.copyFile(f.absolute, target);
             }
             return;
