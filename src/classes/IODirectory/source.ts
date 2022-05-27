@@ -52,14 +52,17 @@ class Source extends IODirectory {
         } catch(e: any) { return Promise.reject(e); }
     }
 
-    public async init(): Promise<void>{
+    public async init(watch: boolean): Promise<void>{
         try {
             await this.checksource();
             await this.updateTree();
+            if(!watch) return;
             this.watcher.add(this.root);
             this.watcher.on("ready", () => {
+                console.log(`Watching for file changes on path ${chalk.yellow(this.root)}`);
                 return Promise.resolve();
             });
+            
         } catch(e: any) { return Promise.reject(e); }
     }
 
