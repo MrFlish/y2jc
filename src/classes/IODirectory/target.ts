@@ -95,11 +95,11 @@ export class Target extends IODirectory {
         .then(() => Promise.resolve())
         .catch(e => Promise.reject(e));
     }
-    public async yamlToJson(source: string, target: string): Promise<void>{
+    public async yamlToJson(source: string, target: string, pretty: boolean, indent: number): Promise<void>{
         try {
             const yfile = await fse.readFile(source, { encoding: "utf-8" });
             const ofile = YAML.parse(yfile);
-            const jfile = JSON.stringify(ofile);
+            const jfile = pretty ? JSON.stringify(ofile, null, "".padEnd(indent, " ")) : JSON.stringify(ofile);
             await fse.writeFile(target, jfile, { encoding: "utf-8" });
             return;
         } catch(e: any) { return Promise.reject(e); }
