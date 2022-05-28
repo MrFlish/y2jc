@@ -1,6 +1,6 @@
 # y2jc
 
-##YAML to JSON compiler
+## YAML to JSON compiler
 
 This library does one thing: 
 It copies files from a given source to a target.
@@ -17,7 +17,7 @@ The configuration file must be called **json.compiler.yaml** and must be located
  - **files** (object array)
 represents an array where each element will be an object with the **source** and **target** keys corresponding to the directories to synchronize.
 
-####Optional keys
+#### Optional keys
 - **watch** (boolean - **false** by default)
 If the **watch** key is set to **true**, the executable will monitor every change in the source directories and reflect them to the target directories.
 If the option is set to **false**, it will synchronize the directories only once before exiting the program.
@@ -28,7 +28,7 @@ If this option is set to **true** the compiled json file will be prettified.
 - **indent** (number - **2** by default)
 If this option is set, defines the number of indent spaces in the prettified json file.
 
-###Example of a configuration file
+### Example of a configuration file
 ```yaml
 files: 
   - 
