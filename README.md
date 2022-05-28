@@ -12,8 +12,8 @@ With the command **npx yaml** the executable is launched and synchronizes the so
 ## Configuration
 The executable needs a configuration file to work.
 The configuration file must be called **json.compiler.yaml** and must be located in the root of the project (at the same level as the **node_modules** folder).
-###List of the different keys of the configuration file
- ####Required keys
+### List of the different keys of the configuration file
+#### Required keys
  - **files** (object array)
 represents an array where each element will be an object with the **source** and **target** keys corresponding to the directories to synchronize.
 
