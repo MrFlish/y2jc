@@ -10,7 +10,8 @@
   "main": "dist/bin/index.js",
   "types": "dist/bin/index.d.ts",
   "files": [
-    "/dist"
+    "/dist",
+    "README.md"
   ],
   "bin": {
     "yaml": "dist/bin/index.js"
