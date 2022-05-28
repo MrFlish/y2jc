@@ -1,6 +1,6 @@
 {
   "name": "y2jc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Compiles yaml to json files. Useful when you want to take advantage of json intellisence in your project, but don't want to write json format in the first place.",
   "scripts": {
     "test": "jest",
