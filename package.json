@@ -9,7 +9,9 @@
   },
   "main": "dist/bin/index.js",
   "types": "dist/bin/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "bin": {
     "yaml": "dist/bin/index.js"
   },
@@ -43,6 +45,7 @@
   },
   "dependencies": {
     "chalk": "<5.0.0",
+    "chokidar": "^3.5.3",
     "fs-extra": "^10.1.0",
     "replace-ext": "^2.0.0",
     "throttle-debounce": "^5.0.0",
