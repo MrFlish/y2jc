@@ -1,13 +1,17 @@
 {
-  "name": "config-compiler",
+  "name": "y2jc",
   "version": "1.0.0",
   "description": "Compiles yaml to json files. Useful when you want to take advantage of json intellisence in your project, but don't want to write json format in the first place.",
-  "main": "./dist/index.js ",
   "scripts": {
     "test": "jest",
     "test:w": "jest --watchAll",
-    "tsc": "tsc --watch",
-    "json-compiler": "node dist/index"
+    "tsc": "tsc --watch"
+  },
+  "main": "dist/bin/index.js",
+  "types": "dist/bin/index.d.ts",
+  "files": ["/dist"],
+  "bin": {
+    "yaml": "dist/bin/index.js"
   },
   "keywords": [
     "compiler",
@@ -20,7 +24,7 @@
     "file"
   ],
   "author": "Bertrand COEZ",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.1",
